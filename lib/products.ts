@@ -15,7 +15,7 @@ export const products: Product[] = [
     name: 'Cashmere Overcoat',
     category: 'Outerwear',
     price: '€890',
-    imageUrl: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=800&q=80&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
   {
@@ -23,7 +23,7 @@ export const products: Product[] = [
     name: 'Silk Slip Dress',
     category: 'Dresses',
     price: '€420',
-    imageUrl: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800&q=80&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
   {
@@ -39,7 +39,7 @@ export const products: Product[] = [
     name: 'Leather Tote',
     category: 'Accessories',
     price: '€380',
-    imageUrl: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
   {
@@ -47,7 +47,7 @@ export const products: Product[] = [
     name: 'Merino Turtleneck',
     category: 'Dresses',
     price: '€195',
-    imageUrl: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
   {
@@ -55,7 +55,7 @@ export const products: Product[] = [
     name: 'Tailored Trousers',
     category: 'Accessories',
     price: '€290',
-    imageUrl: 'https://images.unsplash.com/photo-1594938298603-c8148c4b0e5d?w=800&q=80&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
 ]
