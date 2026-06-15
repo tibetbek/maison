@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Footer from '@/components/Footer'
 
 const ease = [0.25, 0.1, 0.25, 1] as const
@@ -63,13 +64,16 @@ export default function AboutPage() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 1, ease }}
             className="relative aspect-[4/5] overflow-hidden"
-            style={{
-              background:
-                'linear-gradient(160deg, #E8E2D8 0%, #D5CCBF 35%, #C2B9AE 65%, #B0A89E 100%)',
-            }}
           >
-            <div className="absolute inset-0 flex items-end p-8">
-              <span className="font-cormorant italic text-sm text-charcoal/30 tracking-wider">
+            <Image
+              src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80&fit=crop"
+              alt="Maison atelier, Barcelona"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 flex items-end p-8 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent">
+              <span className="font-cormorant italic text-sm text-white/70 tracking-wider">
                 Atelier, Barcelona 2024
               </span>
             </div>
@@ -174,22 +178,25 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          {/* Founder portrait placeholder */}
+          {/* Founder portrait */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 1, ease }}
             className="relative aspect-square md:aspect-[4/5] overflow-hidden"
-            style={{
-              background:
-                'linear-gradient(145deg, #C8C4BC 0%, #B0ABA3 40%, #9A9590 100%)',
-            }}
           >
-            <div className="absolute inset-0 flex items-end p-8">
+            <Image
+              src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80&fit=crop"
+              alt="Elena Voss, Creative Director"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 flex items-end p-8 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent">
               <div>
-                <p className="font-cormorant italic text-base text-white/50">Elena Voss</p>
-                <p className="font-inter text-[9px] tracking-[0.2em] uppercase text-white/30 mt-1">
+                <p className="font-cormorant italic text-base text-white/90">Elena Voss</p>
+                <p className="font-inter text-[9px] tracking-[0.2em] uppercase text-white/60 mt-1">
                   Creative Director
                 </p>
               </div>

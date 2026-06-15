@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import type { Product } from '@/lib/products'
 
 interface ProductCardProps {
@@ -34,17 +35,15 @@ export default function ProductCard({ product, index = 0, animate = true }: Prod
 function CardInner({ product }: { product: Product }) {
   return (
     <>
-      {/* Image placeholder */}
-      <div
-        className="relative aspect-[3/4] overflow-hidden mb-5"
-        style={{ background: product.gradient }}
-      >
-        {/* Centered label on placeholder */}
-        <div className="absolute inset-0 flex items-center justify-center p-8">
-          <span className="font-cormorant italic text-base text-white/40 tracking-widest text-center leading-relaxed">
-            {product.name}
-          </span>
-        </div>
+      {/* Product image */}
+      <div className="relative aspect-[3/4] overflow-hidden mb-5">
+        <Image
+          src={product.imageUrl}
+          alt={product.name}
+          fill
+          className="object-cover object-center transition-transform duration-700 ease-refined group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
 
         {/* Season tag */}
         <div className="absolute top-4 left-4">

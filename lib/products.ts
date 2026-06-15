@@ -5,7 +5,7 @@ export interface Product {
   name: string
   category: Category
   price: string
-  gradient: string
+  imageUrl: string
   season: string
 }
 
@@ -15,7 +15,7 @@ export const products: Product[] = [
     name: 'Cashmere Overcoat',
     category: 'Outerwear',
     price: '€890',
-    gradient: 'linear-gradient(145deg, #C9BFB0 0%, #A89888 45%, #8C7D70 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
   {
@@ -23,7 +23,7 @@ export const products: Product[] = [
     name: 'Silk Slip Dress',
     category: 'Dresses',
     price: '€420',
-    gradient: 'linear-gradient(145deg, #E8D5D0 0%, #D0B8BC 50%, #BCA0AA 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
   {
@@ -31,7 +31,7 @@ export const products: Product[] = [
     name: 'Wool Blazer',
     category: 'Outerwear',
     price: '€650',
-    gradient: 'linear-gradient(145deg, #3A3838 0%, #5A5555 45%, #2E2C2C 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
   {
@@ -39,7 +39,7 @@ export const products: Product[] = [
     name: 'Leather Tote',
     category: 'Accessories',
     price: '€380',
-    gradient: 'linear-gradient(145deg, #9C8060 0%, #B89878 50%, #A08060 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
   {
@@ -47,7 +47,7 @@ export const products: Product[] = [
     name: 'Merino Turtleneck',
     category: 'Dresses',
     price: '€195',
-    gradient: 'linear-gradient(145deg, #E0D8D0 0%, #D0C8C0 50%, #BCBAB5 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
   {
@@ -55,7 +55,7 @@ export const products: Product[] = [
     name: 'Tailored Trousers',
     category: 'Accessories',
     price: '€290',
-    gradient: 'linear-gradient(145deg, #4A4E5C 0%, #6A6E7A 50%, #383C4A 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1594938298603-c8148c4b0e5d?w=800&q=80&fit=crop',
     season: 'SS 25',
   },
 ]

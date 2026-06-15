@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import ProductCard from '@/components/ProductCard'
 import Footer from '@/components/Footer'
@@ -27,12 +28,14 @@ function EditorialStrip() {
         className="absolute inset-[-20%]"
         initial={false}
       >
-        <div
-          className="w-full h-full"
-          style={{
-            background: 'linear-gradient(160deg, #1A1A1A 0%, #2C2825 40%, #1E1C18 70%, #0E0D0C 100%)',
-          }}
+        <Image
+          src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1800&q=80&fit=crop"
+          alt="Fashion editorial"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
         />
+        <div className="absolute inset-0 bg-charcoal/55" />
       </motion.div>
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
@@ -78,14 +81,17 @@ export default function HomePage() {
     >
       {/* ── HERO ────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center bg-offwhite overflow-hidden px-6">
-        {/* Subtle background texture */}
-        <div
-          className="absolute inset-0 opacity-30 pointer-events-none"
-          style={{
-            backgroundImage:
-              'radial-gradient(ellipse 80% 50% at 50% 40%, #F2EDE4 0%, transparent 100%)',
-          }}
+        {/* Hero background image */}
+        <Image
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=80&fit=crop"
+          alt="Fashion editorial"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
         />
+        {/* Cream overlay so type stays readable */}
+        <div className="absolute inset-0 bg-offwhite/85" />
 
         <div className="relative z-10 text-center">
           {/* MAISON — letter-by-letter stagger */}
