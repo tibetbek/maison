@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useCart } from '@/lib/cart'
 
 const ease = [0.25, 0.1, 0.25, 1] as const
 
@@ -18,6 +19,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
+  const { totalItems, open: openCart } = useCart()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30)
@@ -74,14 +76,25 @@ export default function Navigation() {
           <div className="flex items-center gap-5">
             {/* Cart icon */}
             <button
-              aria-label="Cart"
-              className="hidden md:flex text-charcoal/60 hover:text-charcoal transition-colors duration-300"
+              onClick={openCart}
+              aria-label={`Cart${totalItems > 0 ? ` (${totalItems})` : ''}`}
+              className="hidden md:flex items-center gap-1.5 text-charcoal/60 hover:text-charcoal transition-colors duration-300 cursor-pointer relative"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <path d="M16 10a4 4 0 01-8 0" />
               </svg>
+              {totalItems > 0 && (
+                <motion.span
+                  key={totalItems}
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="absolute -top-2 -right-2 h-4 w-4 rounded-full bg-charcoal text-offwhite font-inter text-[9px] flex items-center justify-center"
+                >
+                  {totalItems}
+                </motion.span>
+              )}
             </button>
 
             {/* Hamburger */}

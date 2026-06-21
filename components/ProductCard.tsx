@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import type { Product } from '@/lib/products'
+import QuickViewModal from './QuickViewModal'
 
 interface ProductCardProps {
   product: Product
@@ -13,23 +15,32 @@ interface ProductCardProps {
 const ease = [0.25, 0.1, 0.25, 1] as const
 
 export default function ProductCard({ product, index = 0, animate = true }: ProductCardProps) {
-  const card = animate ? (
-    <motion.div
-      className="group cursor-pointer"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.8, delay: index * 0.1, ease }}
-    >
-      <CardInner product={product} />
-    </motion.div>
-  ) : (
-    <div className="group cursor-pointer">
+  const [showModal, setShowModal] = useState(false)
+
+  const content = (
+    <div onClick={() => setShowModal(true)} className="group cursor-pointer">
       <CardInner product={product} />
     </div>
   )
 
-  return card
+  return (
+    <>
+      {animate ? (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.8, delay: index * 0.1, ease }}
+        >
+          {content}
+        </motion.div>
+      ) : (
+        content
+      )}
+
+      <QuickViewModal product={showModal ? product : null} onClose={() => setShowModal(false)} />
+    </>
+  )
 }
 
 function CardInner({ product }: { product: Product }) {
@@ -46,10 +57,15 @@ function CardInner({ product }: { product: Product }) {
         />
 
         {/* Season tag */}
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 left-4 flex gap-2">
           <span className="font-inter text-[9px] tracking-[0.25em] uppercase text-white/60">
             {product.season}
           </span>
+          {product.isNew && (
+            <span className="font-inter text-[9px] tracking-[0.25em] uppercase text-white bg-charcoal/75 px-2 py-0.5">
+              New
+            </span>
+          )}
         </div>
 
         {/* Hover overlay + CTA */}
@@ -57,7 +73,7 @@ function CardInner({ product }: { product: Product }) {
 
         <div className="absolute bottom-5 left-5 right-5 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-refined">
           <span className="relative inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.2em] uppercase text-white">
-            View piece
+            Quick view
             <span className="h-px bg-white/80 transition-[width] duration-500 ease-refined w-0 group-hover:w-6" />
           </span>
         </div>

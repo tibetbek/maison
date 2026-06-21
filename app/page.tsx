@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -66,6 +66,71 @@ function EditorialStrip() {
               <span className="h-px bg-cream/40 w-6 group-hover:w-12 transition-[width] duration-500 ease-refined" />
             </Link>
           </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+function NewsletterSection() {
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email.trim()) return
+    setSubmitted(true)
+  }
+
+  return (
+    <section className="py-24 border-t border-charcoal/6">
+      <div className="max-w-xl mx-auto px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease }}
+        >
+          <span className="block font-inter text-[9px] tracking-[0.45em] uppercase text-charcoal/30 mb-5">
+            Join the Maison
+          </span>
+          <h2 className="font-cormorant text-[clamp(2rem,5vw,4rem)] font-light leading-none text-charcoal mb-4">
+            The inner circle.
+          </h2>
+          <p className="font-inter text-[12px] leading-relaxed text-charcoal/40 mb-10">
+            Early access to new collections. Private appointments.<br className="hidden md:block" />
+            Occasional notes on craft and slow living.
+          </p>
+
+          {submitted ? (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col items-center gap-3"
+            >
+              <div className="w-8 h-px bg-charcoal/20" />
+              <p className="font-cormorant italic text-xl text-charcoal/50">
+                Thank you. You&rsquo;ll hear from us soon.
+              </p>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex gap-0 max-w-sm mx-auto">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                required
+                className="flex-1 border border-charcoal/15 border-r-0 bg-transparent px-4 py-3 font-inter text-[12px] text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:border-charcoal/40"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 bg-charcoal text-offwhite font-inter text-[9px] tracking-[0.35em] uppercase hover:bg-charcoal/85 transition-colors duration-300 cursor-pointer whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          )}
         </motion.div>
       </div>
     </section>
@@ -227,6 +292,9 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* ── NEWSLETTER ──────────────────────────── */}
+      <NewsletterSection />
 
       {/* ── FOOTER ──────────────────────────────── */}
       <Footer />
